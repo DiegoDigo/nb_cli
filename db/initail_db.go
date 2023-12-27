@@ -2,7 +2,7 @@ package db
 
 import (
 	"database/sql"
-	logger "nb_client/config/Logger"
+	logger "nb_client/config/logger"
 )
 
 func Migrate(conn *sql.DB) {

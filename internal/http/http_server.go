@@ -1,10 +1,10 @@
-package internal
+package http
 
 import (
 	"encoding/json"
 	"fmt"
 	"nb_client/config"
-	"nb_client/internal/command/response"
+	"nb_client/internal/http/command/response"
 	"net/http"
 )
 

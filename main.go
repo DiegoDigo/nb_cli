@@ -1,10 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"github.com/jasonlvhit/gocron"
 	"nb_client/config"
-	logger "nb_client/config/Logger"
+	logger "nb_client/config/logger"
 	"nb_client/db"
+	"nb_client/internal/read"
+	"nb_client/internal/scheduler"
 	"nb_client/models"
 )
 
@@ -26,7 +28,15 @@ func main() {
 		logger.Error("Erro ao buscar dados", err)
 	}
 
-	fmt.Println(all)
+	if len(all) > 0 {
+		var sc *gocron.Scheduler
+		for _, item := range all {
+			sc = scheduler.CreateScheduler(item, read.Files)
+		}
+		<-sc.Start()
+	} else {
+		logger.Info("Não tem revenda cadastrada.")
+	}
 
 	logger.Info("Finalizando programa")
 }

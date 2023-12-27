@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	_ "github.com/mattn/go-sqlite3"
 	"nb_client/config"
-	logger "nb_client/config/Logger"
+	logger "nb_client/config/logger"
 )
 
 func OpenConnection() (*sql.DB, error) {
