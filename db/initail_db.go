@@ -2,7 +2,7 @@ package db
 
 import (
 	"database/sql"
-	"log"
+	logger "nb_client/config/Logger"
 )
 
 func Migrate(conn *sql.DB) {
@@ -18,7 +18,7 @@ func Migrate(conn *sql.DB) {
 
 	_, err := conn.Exec(query)
 	if err != nil {
-		log.Fatal("erro ao conectar")
+		logger.Error("Erro ao fazer a migraçao do banco de dados", err)
 	}
-	log.Println("tablea criada")
+	logger.Info("Migração rodada com sucesso.")
 }
